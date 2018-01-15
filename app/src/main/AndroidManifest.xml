@@ -16,6 +16,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ListNames"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".PictureGallery"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".LearningMode"
+            android:parentActivityName=".MainActivity"/>
     </application>
 
 </manifest>
