@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <people>
-    <person  firstName="Sivert" lastName="Randen" picture="" />
-    <person  firstName="Darri" lastName="Snær Nökkvason" picture="" />
+    <person  firstName="Sivert" lastName="Randen" picture="image1" />
+    <person  firstName="Darri" lastName="Snær Nökkvason" picture="image2" />
 </people>

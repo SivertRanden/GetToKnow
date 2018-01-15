@@ -1,4 +1,4 @@
-package oblig1.dat153.gettoknow;
+package oblig1.dat153.gettoknow.activities;
 
 import android.content.res.XmlResourceParser;
 import android.support.v7.app.AppCompatActivity;
@@ -16,28 +16,30 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import oblig1.dat153.gettoknow.model.PersonCollection;
+import oblig1.dat153.gettoknow.R;
+import oblig1.dat153.gettoknow.model.Person;
+
 public class ListNames extends AppCompatActivity {
+
+    private PersonCollection people;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_names);
 
+        //Getting the listview from layout
         final ListView listView = (ListView) findViewById(R.id.listView);
 
-        XmlResourceParser peopleXml = getResources().getXml(R.xml.people);
-
-        List<String> people = null;
-
-        try{
-            people = getPeople(peopleXml);
-        }catch(Exception e){
-            Log.e("xml", "Could not import people from xml", e);
-
+        people = new PersonCollection(this);
+        ArrayList<String> names = new ArrayList<String>();
+        for(Person p : people.getPeople()){
+            names.add(p.getFirstName() + " " + p.getLastName());
         }
 
         final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>
-                (this, android.R.layout.simple_list_item_1, people);
+                (this, android.R.layout.simple_list_item_1, names);
         listView.setAdapter(arrayAdapter);
     }
 

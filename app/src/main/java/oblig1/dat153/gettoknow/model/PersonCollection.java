@@ -1,5 +1,6 @@
-package oblig1.dat153.gettoknow;
+package oblig1.dat153.gettoknow.model;
 
+import android.content.Context;
 import android.content.res.XmlResourceParser;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -9,14 +10,19 @@ import org.xmlpull.v1.XmlPullParserException;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import oblig1.dat153.gettoknow.R;
+import oblig1.dat153.gettoknow.model.Person;
+
 /**
  * Created by siver on 15.01.2018.
  */
 
 public class PersonCollection extends AppCompatActivity {
-    ArrayList<Person> people;
+    private Context context;
+    private ArrayList<Person> people;
 
-    public PersonCollection(){
+    public PersonCollection(Context context){
+        this.context = context;
         people = new ArrayList();
         try{
             people = readPeopleFromXml();
@@ -26,9 +32,13 @@ public class PersonCollection extends AppCompatActivity {
         }
     }
 
+    public ArrayList<Person> getPeople(){
+        return people;
+    }
+
     private ArrayList<Person> readPeopleFromXml() throws XmlPullParserException, IOException {
-        XmlResourceParser peopleXml = getResources().getXml(R.xml.people);
-        ArrayList<Person> listFromXml = new ArrayList<>();
+        XmlResourceParser peopleXml = context.getResources().getXml(R.xml.people);
+        ArrayList<Person> listFromXml = new ArrayList<Person>();
 
         int eventType = -1;
         while(eventType != peopleXml.END_DOCUMENT){

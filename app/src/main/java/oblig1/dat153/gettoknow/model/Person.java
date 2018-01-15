@@ -1,4 +1,4 @@
-package oblig1.dat153.gettoknow;
+package oblig1.dat153.gettoknow.model;
 
 /**
  * Created by siver on 15.01.2018.

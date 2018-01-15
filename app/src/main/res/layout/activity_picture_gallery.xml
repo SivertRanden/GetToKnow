@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="oblig1.dat153.gettoknow.PictureGallery">
+    tools:context="oblig1.dat153.gettoknow.activities.PictureGallery">
 
     <RelativeLayout
         android:layout_width="368dp"
