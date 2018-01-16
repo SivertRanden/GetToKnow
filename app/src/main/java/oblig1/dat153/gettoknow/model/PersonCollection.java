@@ -36,15 +36,25 @@ public class PersonCollection extends AppCompatActivity {
         return people;
     }
 
+    public Person getPerson(String image){
+        Person person = null;
+        for(Person p : people){
+            if(p.getPictureFileName().equals(image)){
+                person = p;
+            }
+        }
+        return person;
+    }
+
     private ArrayList<Person> readPeopleFromXml() throws XmlPullParserException, IOException {
         XmlResourceParser peopleXml = context.getResources().getXml(R.xml.people);
         ArrayList<Person> listFromXml = new ArrayList<Person>();
 
         int eventType = -1;
-        while(eventType != peopleXml.END_DOCUMENT){
-            if(eventType == XmlResourceParser.START_TAG){
+        while (eventType != peopleXml.END_DOCUMENT) {
+            if (eventType == XmlResourceParser.START_TAG) {
                 String stringName = peopleXml.getName();
-                if(stringName.equals("person")){
+                if (stringName.equals("person")) {
                     String firstName = peopleXml.getAttributeValue(null, "firstName");
                     String lastName = peopleXml.getAttributeValue(null, "lastName");
                     String picture = peopleXml.getAttributeValue(null, "picture");
@@ -55,4 +65,5 @@ public class PersonCollection extends AppCompatActivity {
         }
         return listFromXml;
     }
+
 }

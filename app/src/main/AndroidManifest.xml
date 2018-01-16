@@ -16,12 +16,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.ListNames"
-            android:parentActivityName=".activities.MainActivity"/>
-        <activity android:name=".activities.PictureGallery"
-            android:parentActivityName=".activities.MainActivity"/>
-        <activity android:name=".activities.LearningMode"
-            android:parentActivityName=".activities.MainActivity"/>
+        <activity
+            android:name=".activities.ListNames"
+            android:parentActivityName=".activities.MainActivity" />
+        <activity
+            android:name=".activities.PictureGallery"
+            android:parentActivityName=".activities.MainActivity" />
+        <activity
+            android:name=".activities.LearningMode"
+            android:parentActivityName=".activities.MainActivity" />
+        <activity
+            android:name=".activities.ViewImage"
+            android:parentActivityName=".activities.ListNames" />
     </application>
 
 </manifest>

@@ -15,6 +15,11 @@ public class Person {
         this.setPictureFileName(pictureFileName);
     }
 
+    @Override
+    public String toString(){
+        return firstName + " " + lastName;
+    }
+
     public String getFirstName() {
         return firstName;
     }

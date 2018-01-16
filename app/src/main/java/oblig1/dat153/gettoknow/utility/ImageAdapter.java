@@ -39,6 +39,10 @@ public class ImageAdapter extends BaseAdapter {
         }
     }
 
+    public ArrayList<Integer> getImages(){
+        return images;
+    }
+
     @Override
     public int getCount() {
         return images.size();
@@ -59,7 +63,7 @@ public class ImageAdapter extends BaseAdapter {
         ImageView imageView = new ImageView(context);
         imageView.setImageResource(images.get(position));
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        imageView.setLayoutParams(new GridView.LayoutParams(240, 240));
+        imageView.setLayoutParams(new GridView.LayoutParams(500, 500));
         return imageView;
     }
 }

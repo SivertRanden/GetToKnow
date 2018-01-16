@@ -25,10 +25,12 @@
             android:layout_height="match_parent"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:columnWidth="100dp"
+            android:columnWidth="150dp"
             android:numColumns="auto_fit"
             android:horizontalSpacing="5dp"
             android:verticalSpacing="5dp"
-            android:stretchMode="columnWidth"/>
+            android:stretchMode="columnWidth"
+            android:paddingRight="20dp"
+            android:paddingLeft="30dp"/>
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
