@@ -28,12 +28,12 @@ public class ListNames extends AppCompatActivity {
         final ListView listView = (ListView) findViewById(R.id.listView);
 
         people = new PersonCollection(this);
-
         final ArrayAdapter<Person> arrayAdapter = new ArrayAdapter<Person>
                 (this, android.R.layout.simple_list_item_1, people.getPeople());
         listView.setAdapter(arrayAdapter);
 
         //Adding onclick listener to all elements in the list
+        //Clicking them will start ViewImage activity which shows a picture of the person
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

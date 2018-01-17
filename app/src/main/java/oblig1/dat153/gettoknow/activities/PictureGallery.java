@@ -25,8 +25,10 @@ public class PictureGallery extends AppCompatActivity {
 
         people = new PersonCollection(this);
 
+        //This gets images from the personcollection and makes them available for view
         gridView.setAdapter(new ImageAdapter(this));
 
+        //Adding onclick listener to all the images in the grid
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id){

@@ -17,6 +17,7 @@ public class ViewImage extends AppCompatActivity {
 
         Intent i = getIntent();
 
+        //ListNames sends position in the arraylist of the person you clicked, use this to show correct image
         int pos = i.getExtras().getInt("pos");
         ImageAdapter adapter = new ImageAdapter(this);
 

@@ -21,6 +21,10 @@ public class PersonCollection extends AppCompatActivity {
     private Context context;
     private ArrayList<Person> people;
 
+    /**
+     * Makes an arraylist containing Person objects from the XML file people.xml
+     * @param context
+     */
     public PersonCollection(Context context){
         this.context = context;
         people = new ArrayList();
@@ -28,7 +32,6 @@ public class PersonCollection extends AppCompatActivity {
             people = readPeopleFromXml();
         }catch(Exception e){
             Log.e("xml", "Could not import people from xml", e);
-
         }
     }
 
@@ -46,6 +49,9 @@ public class PersonCollection extends AppCompatActivity {
         return person;
     }
 
+    /**
+     * Reads the xml file and puts the people into the arraylist
+     */
     private ArrayList<Person> readPeopleFromXml() throws XmlPullParserException, IOException {
         XmlResourceParser peopleXml = context.getResources().getXml(R.xml.people);
         ArrayList<Person> listFromXml = new ArrayList<Person>();

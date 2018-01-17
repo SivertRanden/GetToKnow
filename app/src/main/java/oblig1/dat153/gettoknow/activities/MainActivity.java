@@ -16,18 +16,18 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
+    //Starter ListNames
     public void button1Action(View view){
-        Log.d("1","Button 1 clicked");
         startActivity(new Intent(this, ListNames.class));
     }
 
+    //Starter PictureGallery
     public void button2Action(View view){
-        Log.d("2", "Button 2 clicked");
         startActivity(new Intent(this, PictureGallery.class));
     }
 
+    //Starter LearningMode
     public void button3Action(View view){
-        Log.d("3", "Button 3 clicked");
         startActivity(new Intent(this, LearningMode.class));
     }
 }

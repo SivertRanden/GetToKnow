@@ -35,6 +35,8 @@ public class ImageAdapter extends BaseAdapter {
         people = new PersonCollection(context);
 
         for(Person p : people.getPeople()){
+            //Because the xml file only contains filename for image, we need to get the id of the actual drawable file
+            //and use that to get the actual image and add to the images arraylist
             images.add(context.getResources().getIdentifier(p.getPictureFileName(), "drawable", context.getPackageName()));
         }
     }
@@ -58,6 +60,9 @@ public class ImageAdapter extends BaseAdapter {
         return 0;
     }
 
+    /**
+     * This gets the view of the actual image so that we can use this in gridview and imageview
+     */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ImageView imageView = new ImageView(context);
