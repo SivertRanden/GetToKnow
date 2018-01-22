@@ -8,7 +8,7 @@
 
     <LinearLayout
         android:layout_width="369dp"
-        android:layout_height="220dp"
+        android:layout_height="282dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
@@ -49,6 +49,16 @@
             android:layout_marginRight="24dp"
             android:onClick="button3Action"
             android:text="@string/main_page_button3" />
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            
+            android:text="@string/main_page_button4" />
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

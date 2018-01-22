@@ -3,6 +3,7 @@
     <string name="main_page_button1">List names</string>
     <string name="main_page_button2">Picture gallery</string>
     <string name="main_page_button3">Learning mode</string>
+    <string name="main_page_button4">Add People</string>
     <string name="guess_button_text">Guess the name!</string>
     <string name="guess_description">Guess the first name of the person in the picture</string>
 </resources>

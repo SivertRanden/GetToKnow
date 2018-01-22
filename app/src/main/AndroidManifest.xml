@@ -28,6 +28,7 @@
         <activity
             android:name=".activities.ViewImage"
             android:parentActivityName=".activities.ListNames" />
+        <activity android:name=".activities.AddPeople"></activity>
     </application>
 
 </manifest>

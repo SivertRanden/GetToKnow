@@ -30,4 +30,7 @@ public class MainActivity extends AppCompatActivity {
     public void button3Action(View view){
         startActivity(new Intent(this, LearningMode.class));
     }
+
+    //Starter AddPeople
+    public void button4Action(View view) { startActivity(new Intent ( this, AddPeople.class)); }
 }
