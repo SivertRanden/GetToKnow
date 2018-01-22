@@ -38,7 +38,6 @@ public class PersonCollection extends AppCompatActivity {
     public ArrayList<Person> getPeople(){
         return people;
     }
-
     public Person getPerson(String image){
         Person person = null;
         for(Person p : people){
@@ -71,5 +70,4 @@ public class PersonCollection extends AppCompatActivity {
         }
         return listFromXml;
     }
-
 }
