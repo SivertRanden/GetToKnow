@@ -26,15 +26,15 @@ import oblig1.dat153.gettoknow.model.Person;
 public class ImageAdapter extends BaseAdapter {
 
     private Context context;
-    private PersonCollection people;
     private ArrayList<Integer> images;
+    private ArrayList<Person> people;
 
-    public ImageAdapter(Context context){
+    public ImageAdapter(Context context, ArrayList<Person> people){
         this.context = context;
         images = new ArrayList<Integer>();
-        people = new PersonCollection(context);
+        this.people = people;
 
-        for(Person p : people.getPeople()){
+        for(Person p : people){
             //Because the xml file only contains filename for image, we need to get the id of the actual drawable file
             //and use that to get the actual image and add to the images arraylist
             images.add(context.getResources().getIdentifier(p.getPictureFileName(), "drawable", context.getPackageName()));

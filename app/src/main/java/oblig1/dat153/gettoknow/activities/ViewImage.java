@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.widget.ImageView;
 
 import oblig1.dat153.gettoknow.R;
+import oblig1.dat153.gettoknow.model.PersonCollection;
 import oblig1.dat153.gettoknow.utility.ImageAdapter;
 
 public class ViewImage extends AppCompatActivity {
@@ -19,7 +20,8 @@ public class ViewImage extends AppCompatActivity {
 
         //ListNames sends position in the arraylist of the person you clicked, use this to show correct image
         int pos = i.getExtras().getInt("pos");
-        ImageAdapter adapter = new ImageAdapter(this);
+        PersonCollection people = new PersonCollection(this);
+        ImageAdapter adapter = new ImageAdapter(this, people.getPeople());
 
         ImageView imageView = (ImageView) findViewById(R.id.imageView);
         imageView.setImageResource(adapter.getImages().get(pos));
