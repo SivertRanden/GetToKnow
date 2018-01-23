@@ -31,7 +31,10 @@
         <activity
             android:name=".activities.ViewImage"
             android:parentActivityName=".activities.ListNames" />
-        <activity android:name=".activities.AddPeople"></activity>
+        <activity android:name=".activities.AddPeople"
+            android:parentActivityName=".activities.MainActivity">
+
+        </activity>
     </application>
 
 </manifest>

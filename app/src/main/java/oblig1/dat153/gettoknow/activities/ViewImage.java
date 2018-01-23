@@ -1,13 +1,16 @@
 package oblig1.dat153.gettoknow.activities;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 
 import oblig1.dat153.gettoknow.R;
 import oblig1.dat153.gettoknow.model.PersonCollection;
 import oblig1.dat153.gettoknow.utility.ImageAdapter;
+import oblig1.dat153.gettoknow.utility.Util;
 
 public class ViewImage extends AppCompatActivity {
 
@@ -20,10 +23,17 @@ public class ViewImage extends AppCompatActivity {
 
         //ListNames sends position in the arraylist of the person you clicked, use this to show correct image
         int pos = i.getExtras().getInt("pos");
-        PersonCollection people = new PersonCollection(this);
-        ImageAdapter adapter = new ImageAdapter(this, people.getPeople());
+        ImageAdapter adapter = new ImageAdapter(this, PersonCollection.people);
 
         ImageView imageView = (ImageView) findViewById(R.id.imageView);
-        imageView.setImageResource(adapter.getImages().get(pos));
+        Bitmap bitmap = PersonCollection.people.get(pos).getBitmap();
+        if(bitmap == null) {
+            try {
+                bitmap = Util.decodeBitmap(this, PersonCollection.people.get(pos).getimagePath());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        imageView.setImageBitmap(bitmap);
     }
 }

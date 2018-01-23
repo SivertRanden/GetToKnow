@@ -17,8 +17,6 @@ import oblig1.dat153.gettoknow.model.Person;
 
 public class ListNames extends AppCompatActivity {
 
-    private PersonCollection people;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,9 +25,8 @@ public class ListNames extends AppCompatActivity {
         //Getting the listview from layout
         final ListView listView = (ListView) findViewById(R.id.listView);
 
-        people = new PersonCollection(this);
         final ArrayAdapter<Person> arrayAdapter = new ArrayAdapter<Person>
-                (this, android.R.layout.simple_list_item_1, people.getPeople());
+                (this, android.R.layout.simple_list_item_1, PersonCollection.people);
         listView.setAdapter(arrayAdapter);
 
         //Adding onclick listener to all elements in the list

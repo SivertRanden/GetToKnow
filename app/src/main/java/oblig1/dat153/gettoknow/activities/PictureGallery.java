@@ -14,8 +14,6 @@ import oblig1.dat153.gettoknow.utility.ImageAdapter;
 
 public class PictureGallery extends AppCompatActivity {
 
-    private PersonCollection people;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,17 +21,15 @@ public class PictureGallery extends AppCompatActivity {
 
         GridView gridView = (GridView) findViewById(R.id.gridView);
 
-        people = new PersonCollection(this);
-
         //This gets images from the personcollection and makes them available for view
-        gridView.setAdapter(new ImageAdapter(this, people.getPeople()));
+        gridView.setAdapter(new ImageAdapter(this, PersonCollection.people));
 
         //Adding onclick listener to all the images in the grid
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id){
-                Log.d("Test onclick image", "" + people.getPeople().get(position));
-                Toast.makeText(getApplicationContext(), "" + people.getPeople().get(position), Toast.LENGTH_LONG).show();
+                Log.d("Test onclick image", "" + PersonCollection.people.get(position));
+                Toast.makeText(getApplicationContext(), "" + PersonCollection.people.get(position), Toast.LENGTH_LONG).show();
             }
         });
     }

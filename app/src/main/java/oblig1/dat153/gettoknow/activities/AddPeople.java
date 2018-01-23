@@ -2,6 +2,7 @@ package oblig1.dat153.gettoknow.activities;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AlertDialog;
@@ -12,8 +13,12 @@ import android.widget.EditText;
 
 import oblig1.dat153.gettoknow.R;
 import oblig1.dat153.gettoknow.model.Person;
+import oblig1.dat153.gettoknow.model.PersonCollection;
+import oblig1.dat153.gettoknow.utility.Util;
 
 public class AddPeople extends AppCompatActivity {
+
+    private Bitmap bitmap = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +56,8 @@ public class AddPeople extends AppCompatActivity {
 
         String firstname = firstNameField.getText().toString();
         String lastname = lastNameField.getText().toString();
-        Person p = new Person(firstname, lastname, "image1");
+        Person p = new Person(firstname, lastname, bitmap);
+        PersonCollection.people.add(p);
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent imageReturnedIntent){
@@ -60,11 +66,21 @@ public class AddPeople extends AppCompatActivity {
             case 0:
                 if(resultCode == RESULT_OK){
                     Uri selectedImage = imageReturnedIntent.getData();
+                    try{
+                        bitmap = Util.decodeBitmap(this, selectedImage);
+                    }catch(Exception e){
+                        e.printStackTrace();
+                    }
                 }
             break;
             case 1:
                 if(resultCode == RESULT_OK){
                     Uri selectedImage = imageReturnedIntent.getData();
+                    try{
+                        bitmap = Util.decodeBitmap(this, selectedImage);
+                    }catch(Exception e){
+                        e.printStackTrace();
+                    }
                 }
             break;
         }

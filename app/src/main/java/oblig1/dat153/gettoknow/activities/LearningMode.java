@@ -1,6 +1,7 @@
 package oblig1.dat153.gettoknow.activities;
 
 import android.content.DialogInterface;
+import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -19,14 +20,14 @@ import oblig1.dat153.gettoknow.R;
 import oblig1.dat153.gettoknow.model.Person;
 import oblig1.dat153.gettoknow.model.PersonCollection;
 import oblig1.dat153.gettoknow.utility.ImageAdapter;
+import oblig1.dat153.gettoknow.utility.Util;
 
 public class LearningMode extends AppCompatActivity {
 
     private int score;
     private int guesses;
-    private Random randomGenerator;
     private ImageAdapter adapter;
-    private PersonCollection people;
+    private Person currentPerson;
     private ArrayList<Person> randomList;
     String currentImage;
 
@@ -34,12 +35,10 @@ public class LearningMode extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_learning_mode);
-        people = new PersonCollection(this);
         score = 0;
         guesses = 0;
-        randomList = people.getPeople();
+        randomList = PersonCollection.people;
         Collections.shuffle(randomList);
-        currentImage = randomList.get(0).getPictureFileName();
         adapter = new ImageAdapter(this, randomList);
         setRandomImage();
     }
@@ -47,7 +46,7 @@ public class LearningMode extends AppCompatActivity {
     public void guess(View view){
         EditText editText = findViewById(R.id.guessedName);
         String guessedName = editText.getText().toString().toLowerCase();
-        String correctName = people.getPerson(currentImage).getFirstName().toLowerCase();
+        String correctName = currentPerson.getFirstName().toLowerCase();
         if(guessedName.equals(correctName)){
             score++;
             Toast.makeText(getApplicationContext(), "Correct!", Toast.LENGTH_LONG).show();
@@ -65,8 +64,14 @@ public class LearningMode extends AppCompatActivity {
 
     private void setRandomImage(){
         ImageView imageView = findViewById(R.id.learningModeImageView);
-        currentImage = randomList.get(guesses).getPictureFileName();
-        imageView.setImageResource(adapter.getImages().get(guesses));
+        currentPerson = randomList.get(guesses);
+        Bitmap bitmap = currentPerson.getBitmap();
+        try{
+            bitmap = Util.decodeBitmap(this, PersonCollection.people.get(guesses).getimagePath());
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        imageView.setImageBitmap(bitmap);
     }
 
     public void showFinishDialog(){

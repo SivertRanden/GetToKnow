@@ -2,6 +2,7 @@ package oblig1.dat153.gettoknow.utility;
 
 import android.content.Context;
 import android.content.res.XmlResourceParser;
+import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.View;
@@ -26,33 +27,19 @@ import oblig1.dat153.gettoknow.model.Person;
 public class ImageAdapter extends BaseAdapter {
 
     private Context context;
-    private ArrayList<Integer> images;
-    private ArrayList<Person> people;
 
     public ImageAdapter(Context context, ArrayList<Person> people){
         this.context = context;
-        images = new ArrayList<Integer>();
-        this.people = people;
-
-        for(Person p : people){
-            //Because the xml file only contains filename for image, we need to get the id of the actual drawable file
-            //and use that to get the actual image and add to the images arraylist
-            images.add(context.getResources().getIdentifier(p.getPictureFileName(), "drawable", context.getPackageName()));
-        }
-    }
-
-    public ArrayList<Integer> getImages(){
-        return images;
     }
 
     @Override
     public int getCount() {
-        return images.size();
+        return PersonCollection.people.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return images.get(position);
+        return PersonCollection.people.get(position);
     }
 
     @Override
@@ -66,7 +53,15 @@ public class ImageAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ImageView imageView = new ImageView(context);
-        imageView.setImageResource(images.get(position));
+        Bitmap bitmap = PersonCollection.people.get(position).getBitmap();
+        if(bitmap == null) {
+            try {
+                bitmap = Util.decodeBitmap(context, PersonCollection.people.get(position).getimagePath());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        imageView.setImageBitmap(bitmap);
         imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
         imageView.setLayoutParams(new GridView.LayoutParams(500, 500));
         return imageView;
