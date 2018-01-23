@@ -8,6 +8,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.TranslateAnimation;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -29,7 +32,8 @@ public class LearningMode extends AppCompatActivity {
     private ImageAdapter adapter;
     private Person currentPerson;
     private ArrayList<Person> randomList;
-    String currentImage;
+    private Animation fadeIn;
+    private Animation fadeOut;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +42,8 @@ public class LearningMode extends AppCompatActivity {
         score = 0;
         guesses = 0;
         randomList = PersonCollection.people;
+        fadeIn = AnimationUtils.loadAnimation(this, R.anim.fade_in);
+        fadeOut = AnimationUtils.loadAnimation(this, R.anim.fade_out);
         Collections.shuffle(randomList);
         adapter = new ImageAdapter(this, randomList);
         setRandomImage();
@@ -71,7 +77,13 @@ public class LearningMode extends AppCompatActivity {
         }catch(Exception e){
             e.printStackTrace();
         }
-        imageView.setImageBitmap(bitmap);
+        if(guesses == 0){
+            imageView.setImageBitmap(bitmap);
+        }else {
+            imageView.setAnimation(fadeOut);
+            imageView.setImageBitmap(bitmap);
+            imageView.setAnimation(fadeIn);
+        }
     }
 
     public void showFinishDialog(){

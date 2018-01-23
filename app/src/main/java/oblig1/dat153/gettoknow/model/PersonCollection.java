@@ -28,7 +28,6 @@ public class PersonCollection extends AppCompatActivity {
         people.add(new Person("Bentein", "Thomassen", "android.resource://oblig1.dat153.gettoknow/drawable/bentein"));
         people.add(new Person("Volker", "Stoltz", "android.resource://oblig1.dat153.gettoknow/drawable/image3"));
         return people;
-
     }
 
     public ArrayList<Person> getPeople(){
