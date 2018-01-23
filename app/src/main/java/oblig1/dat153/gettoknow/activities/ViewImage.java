@@ -25,7 +25,8 @@ public class ViewImage extends AppCompatActivity {
         int pos = i.getExtras().getInt("pos");
         ImageAdapter adapter = new ImageAdapter(this, PersonCollection.people);
 
-        ImageView imageView = (ImageView) findViewById(R.id.imageView);
+        ImageView imageView = findViewById(R.id.imageView);
+
         Bitmap bitmap = PersonCollection.people.get(pos).getBitmap();
         if(bitmap == null) {
             try {

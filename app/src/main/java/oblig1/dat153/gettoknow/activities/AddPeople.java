@@ -8,6 +8,7 @@ import android.provider.MediaStore;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
@@ -46,8 +47,8 @@ public class AddPeople extends AppCompatActivity {
                         startActivityForResult(pickFromGallery, 1);
                     }
                 });
-        AlertDialog scoreAlert = builder.create();
-        scoreAlert.show();
+        AlertDialog chooserAlert = builder.create();
+        chooserAlert.show();
     }
 
     public void completeButtonClicked(View view){
@@ -58,12 +59,14 @@ public class AddPeople extends AppCompatActivity {
         String lastname = lastNameField.getText().toString();
         Person p = new Person(firstname, lastname, bitmap);
         PersonCollection.people.add(p);
+        finish();
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent imageReturnedIntent){
         super.onActivityResult(requestCode, resultCode, imageReturnedIntent);
         switch(requestCode) {
             case 0:
+                Log.d("resultcode", ""+ resultCode);
                 if(resultCode == RESULT_OK){
                     Uri selectedImage = imageReturnedIntent.getData();
                     try{
