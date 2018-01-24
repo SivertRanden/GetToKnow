@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import oblig1.dat153.gettoknow.R;
 import oblig1.dat153.gettoknow.model.Person;
@@ -35,10 +36,7 @@ public class AddPeople extends AppCompatActivity {
                 "Camera",
                 new DialogInterface.OnClickListener(){
                     public void onClick(DialogInterface dialog, int id) {
-                        //ContentValues values = new ContentValues();
-                        //Uri capturedImageURI = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
                         Intent takePicture = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-                        //takePicture.putExtra(MediaStore.EXTRA_OUTPUT, capturedImageURI);
                         startActivityForResult(takePicture, 0);
                     }
                 });
@@ -63,6 +61,7 @@ public class AddPeople extends AppCompatActivity {
         String lastname = lastNameField.getText().toString();
         Person p = new Person(firstname, lastname, bitmap);
         PersonCollection.people.add(p);
+        Toast.makeText(getApplicationContext(), "Person added!", Toast.LENGTH_LONG).show();
         finish();
     }
 
@@ -71,16 +70,7 @@ public class AddPeople extends AppCompatActivity {
         switch(requestCode) {
             case 0:
                 if(resultCode == RESULT_OK){
-                    Bundle extras = imageReturnedIntent.getExtras();
-                    bitmap = (Bitmap) extras.get("data");
-//                    Uri selectedImage = imageReturnedIntent.getData();
-//                    try{
-//                        bitmap = Util.decodeBitmap(this, selectedImage);
-//                        Log.d("bitmap", "" + bitmap);
-//
-//                    }catch(Exception e){
-//                        e.printStackTrace();
-//                    }
+                    bitmap = (Bitmap) imageReturnedIntent.getExtras().get("data");
                 }
             break;
             case 1:
