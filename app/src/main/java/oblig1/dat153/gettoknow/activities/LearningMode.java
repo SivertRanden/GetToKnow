@@ -32,8 +32,6 @@ public class LearningMode extends AppCompatActivity {
     private ImageAdapter adapter;
     private Person currentPerson;
     private ArrayList<Person> randomList;
-    private Animation fadeIn;
-    private Animation fadeOut;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +40,6 @@ public class LearningMode extends AppCompatActivity {
         score = 0;
         guesses = 0;
         randomList = PersonCollection.people;
-        fadeIn = AnimationUtils.loadAnimation(this, R.anim.fade_in);
-        fadeOut = AnimationUtils.loadAnimation(this, R.anim.fade_out);
         Collections.shuffle(randomList);
         adapter = new ImageAdapter(this, randomList);
         setRandomImage();
@@ -72,14 +68,18 @@ public class LearningMode extends AppCompatActivity {
         ImageView imageView = findViewById(R.id.learningModeImageView);
         currentPerson = randomList.get(guesses);
         Bitmap bitmap = currentPerson.getBitmap();
-        try{
-            bitmap = Util.decodeBitmap(this, PersonCollection.people.get(guesses).getimagePath());
-        }catch(Exception e){
-            e.printStackTrace();
+        if(bitmap == null) {
+            try {
+                bitmap = Util.decodeBitmap(this, PersonCollection.people.get(guesses).getimagePath());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
         if(guesses == 0){
             imageView.setImageBitmap(bitmap);
         }else {
+            Animation fadeIn = AnimationUtils.loadAnimation(this, R.anim.fade_in);
+            Animation fadeOut = AnimationUtils.loadAnimation(this, R.anim.fade_out);
             imageView.setAnimation(fadeOut);
             imageView.setImageBitmap(bitmap);
             imageView.setAnimation(fadeIn);
