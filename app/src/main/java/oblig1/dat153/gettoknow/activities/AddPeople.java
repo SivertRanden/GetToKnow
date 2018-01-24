@@ -1,5 +1,6 @@
 package oblig1.dat153.gettoknow.activities;
 
+import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -34,7 +35,10 @@ public class AddPeople extends AppCompatActivity {
                 "Camera",
                 new DialogInterface.OnClickListener(){
                     public void onClick(DialogInterface dialog, int id) {
-                        Intent takePicture = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                        //ContentValues values = new ContentValues();
+                        //Uri capturedImageURI = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
+                        Intent takePicture = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                        //takePicture.putExtra(MediaStore.EXTRA_OUTPUT, capturedImageURI);
                         startActivityForResult(takePicture, 0);
                     }
                 });
@@ -66,14 +70,17 @@ public class AddPeople extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, imageReturnedIntent);
         switch(requestCode) {
             case 0:
-                Log.d("resultcode", ""+ resultCode);
                 if(resultCode == RESULT_OK){
-                    Uri selectedImage = imageReturnedIntent.getData();
-                    try{
-                        bitmap = Util.decodeBitmap(this, selectedImage);
-                    }catch(Exception e){
-                        e.printStackTrace();
-                    }
+                    Bundle extras = imageReturnedIntent.getExtras();
+                    bitmap = (Bitmap) extras.get("data");
+//                    Uri selectedImage = imageReturnedIntent.getData();
+//                    try{
+//                        bitmap = Util.decodeBitmap(this, selectedImage);
+//                        Log.d("bitmap", "" + bitmap);
+//
+//                    }catch(Exception e){
+//                        e.printStackTrace();
+//                    }
                 }
             break;
             case 1:
