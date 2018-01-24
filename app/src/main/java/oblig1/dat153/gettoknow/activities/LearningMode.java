@@ -7,6 +7,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -55,7 +56,8 @@ public class LearningMode extends AppCompatActivity {
         }else{
             Toast.makeText(getApplicationContext(), "Wrong!", Toast.LENGTH_LONG).show();
         }
-        guesses++;
+        if(guesses < randomList.size())
+            guesses++;
         editText.setText("");
         if(guesses != 0 && guesses < randomList.size()){
             setRandomImage();
@@ -99,5 +101,15 @@ public class LearningMode extends AppCompatActivity {
                 });
         AlertDialog scoreAlert = builder.create();
         scoreAlert.show();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == android.R.id.home){
+            showFinishDialog();
+            return true;
+        }else{
+            return super.onOptionsItemSelected(item);
+        }
     }
 }
