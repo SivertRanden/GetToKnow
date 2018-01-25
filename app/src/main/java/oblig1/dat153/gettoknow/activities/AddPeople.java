@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import oblig1.dat153.gettoknow.R;
 import oblig1.dat153.gettoknow.model.Person;
@@ -55,11 +56,23 @@ public class AddPeople extends AppCompatActivity {
         EditText firstNameField = findViewById(R.id.firstName);
         EditText lastNameField = findViewById(R.id.lastName);
 
-        String firstname = firstNameField.getText().toString();
-        String lastname = lastNameField.getText().toString();
-        Person p = new Person(firstname, lastname, bitmap);
-        PersonCollection.people.add(p);
-        finish();
+        String firstname = firstNameField.getText().toString().toLowerCase();
+        String lastname = lastNameField.getText().toString().toLowerCase();
+
+        if (Util.inputValidation(firstname) && Util.inputValidation(lastname)) {
+            String temp = firstname.substring(0,1).toUpperCase() + firstname.substring(1, firstname.length());
+            firstname = temp;
+            temp = lastname.substring(0,1).toUpperCase() + lastname.substring(1, lastname.length());
+            lastname = temp;
+            Person p = new Person(firstname, lastname, bitmap);
+            PersonCollection.people.add(p);
+            finish();
+        } else {
+            Toast.makeText(getApplicationContext(), "Only letters are allowed!", Toast.LENGTH_LONG).show();
+            this.recreate();
+        }
+
+
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent imageReturnedIntent){

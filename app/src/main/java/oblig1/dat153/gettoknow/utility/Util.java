@@ -34,4 +34,8 @@ public class Util {
         o2.inSampleSize = scale;
         return BitmapFactory.decodeStream(context.getContentResolver().openInputStream(selectedImage), null, o2);
     }
+
+    public static boolean inputValidation(String input) {
+        return input.matches("^[a-zåøæ]+$");
+    }
 }
