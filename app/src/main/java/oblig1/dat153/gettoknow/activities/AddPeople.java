@@ -60,16 +60,13 @@ public class AddPeople extends AppCompatActivity {
         String lastname = lastNameField.getText().toString().toLowerCase();
 
         if (Util.inputValidation(firstname) && Util.inputValidation(lastname)) {
-            String temp = firstname.substring(0,1).toUpperCase() + firstname.substring(1, firstname.length());
-            firstname = temp;
-            temp = lastname.substring(0,1).toUpperCase() + lastname.substring(1, lastname.length());
-            lastname = temp;
+            firstname = firstname.substring(0,1).toUpperCase() + firstname.substring(1, firstname.length());
+            lastname = lastname.substring(0,1).toUpperCase() + lastname.substring(1, lastname.length());
             Person p = new Person(firstname, lastname, bitmap);
             PersonCollection.people.add(p);
             finish();
         } else {
             Toast.makeText(getApplicationContext(), "Only letters are allowed!", Toast.LENGTH_LONG).show();
-            this.recreate();
         }
 
 

@@ -49,20 +49,24 @@ public class LearningMode extends AppCompatActivity {
     public void guess(View view){
         EditText editText = findViewById(R.id.guessedName);
         String guessedName = editText.getText().toString().toLowerCase();
-        String correctName = currentPerson.getFirstName().toLowerCase();
-        if(guessedName.equals(correctName)){
-            score++;
-            Toast.makeText(getApplicationContext(), "Correct!", Toast.LENGTH_LONG).show();
-        }else{
-            Toast.makeText(getApplicationContext(), "Wrong!", Toast.LENGTH_LONG).show();
-        }
-        if(guesses < randomList.size())
-            guesses++;
-        editText.setText("");
-        if(guesses != 0 && guesses < randomList.size()){
-            setRandomImage();
-        }else{
-            showFinishDialog();
+        if (!Util.inputValidation(guessedName)) {
+            Toast.makeText(getApplicationContext(), "Only letters are allowed!", Toast.LENGTH_LONG).show();
+        } else {
+            String correctName = currentPerson.getFirstName().toLowerCase();
+            if (guessedName.equals(correctName)) {
+                score++;
+                Toast.makeText(getApplicationContext(), "Correct!", Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(getApplicationContext(), "Wrong!", Toast.LENGTH_LONG).show();
+            }
+            if (guesses < randomList.size())
+                guesses++;
+            editText.setText("");
+            if (guesses != 0 && guesses < randomList.size()) {
+                setRandomImage();
+            } else {
+                showFinishDialog();
+            }
         }
     }
 
