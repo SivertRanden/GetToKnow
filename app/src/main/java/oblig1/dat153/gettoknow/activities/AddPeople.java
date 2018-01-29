@@ -64,12 +64,11 @@ public class AddPeople extends AppCompatActivity {
             lastname = lastname.substring(0,1).toUpperCase() + lastname.substring(1, lastname.length());
             Person p = new Person(firstname, lastname, bitmap);
             PersonCollection.people.add(p);
+            Toast.makeText(getApplicationContext(), "Person added!", Toast.LENGTH_LONG).show();
             finish();
         } else {
             Toast.makeText(getApplicationContext(), "Only letters are allowed!", Toast.LENGTH_LONG).show();
         }
-
-
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent imageReturnedIntent){
@@ -78,9 +77,8 @@ public class AddPeople extends AppCompatActivity {
             case 0:
                 Log.d("resultcode", ""+ resultCode);
                 if(resultCode == RESULT_OK){
-                    Uri selectedImage = imageReturnedIntent.getData();
                     try{
-                        bitmap = Util.decodeBitmap(this, selectedImage);
+                        bitmap = (Bitmap) imageReturnedIntent.getExtras().get("data");
                     }catch(Exception e){
                         e.printStackTrace();
                     }
