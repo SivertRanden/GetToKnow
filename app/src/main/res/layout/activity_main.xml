@@ -8,11 +8,12 @@
 
     <LinearLayout
         android:layout_width="369dp"
-        android:layout_height="282dp"
+        android:layout_height="match_parent"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
         android:orientation="vertical"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -27,16 +28,24 @@
             android:layout_marginBottom="24dp"
             android:layout_marginLeft="24dp"
             android:layout_marginRight="24dp"
+            android:background="@drawable/button"
+            android:textColor="#ffffff"
+            android:contextClickable="true"
+            android:linksClickable="true"
+            android:longClickable="true"
             android:onClick="button1Action"
             android:text="@string/main_page_button1" />
 
         <Button
+            style="@style/Widget.AppCompat.Button.Colored"
             android:id="@+id/button2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
             android:layout_marginLeft="24dp"
             android:layout_marginRight="24dp"
+            android:background="@drawable/button"
+            android:textColor="#ffffff"
             android:onClick="button2Action"
             android:text="@string/main_page_button2" />
 
@@ -47,6 +56,8 @@
             android:layout_marginBottom="24dp"
             android:layout_marginLeft="24dp"
             android:layout_marginRight="24dp"
+            android:background="@drawable/button"
+            android:textColor="#ffffff"
             android:onClick="button3Action"
             android:text="@string/main_page_button3" />
 
@@ -57,7 +68,8 @@
             android:layout_marginBottom="24dp"
             android:layout_marginLeft="24dp"
             android:layout_marginRight="24dp"
-
+            android:background="@drawable/button"
+            android:textColor="#ffffff"
             android:onClick="button4Action"
             android:text="@string/main_page_button4" />
 

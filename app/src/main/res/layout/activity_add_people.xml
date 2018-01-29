@@ -53,7 +53,7 @@
             android:clickable="true"
             android:onClick="completeButtonClicked"
             android:rotation="-90"
-            app:backgroundTint="@android:color/darker_gray"
+            app:backgroundTint="@color/colorPrimary"
             app:srcCompat="@android:drawable/arrow_down_float" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
