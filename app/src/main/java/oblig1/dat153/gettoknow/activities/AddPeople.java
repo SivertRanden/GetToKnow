@@ -1,6 +1,5 @@
 package oblig1.dat153.gettoknow.activities;
 
-import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -36,7 +35,7 @@ public class AddPeople extends AppCompatActivity {
                 "Camera",
                 new DialogInterface.OnClickListener(){
                     public void onClick(DialogInterface dialog, int id) {
-                        Intent takePicture = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                        Intent takePicture = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                         startActivityForResult(takePicture, 0);
                     }
                 });
@@ -57,20 +56,34 @@ public class AddPeople extends AppCompatActivity {
         EditText firstNameField = findViewById(R.id.firstName);
         EditText lastNameField = findViewById(R.id.lastName);
 
-        String firstname = firstNameField.getText().toString();
-        String lastname = lastNameField.getText().toString();
-        Person p = new Person(firstname, lastname, bitmap);
-        PersonCollection.people.add(p);
-        Toast.makeText(getApplicationContext(), "Person added!", Toast.LENGTH_LONG).show();
-        finish();
+        String firstname = firstNameField.getText().toString().toLowerCase();
+        String lastname = lastNameField.getText().toString().toLowerCase();
+
+        if (Util.inputValidation(firstname) && Util.inputValidation(lastname)) {
+            firstname = firstname.substring(0,1).toUpperCase() + firstname.substring(1, firstname.length());
+            lastname = lastname.substring(0,1).toUpperCase() + lastname.substring(1, lastname.length());
+            Person p = new Person(firstname, lastname, bitmap);
+            PersonCollection.people.add(p);
+            finish();
+        } else {
+            Toast.makeText(getApplicationContext(), "Only letters are allowed!", Toast.LENGTH_LONG).show();
+        }
+
+
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent imageReturnedIntent){
         super.onActivityResult(requestCode, resultCode, imageReturnedIntent);
         switch(requestCode) {
             case 0:
+                Log.d("resultcode", ""+ resultCode);
                 if(resultCode == RESULT_OK){
-                    bitmap = (Bitmap) imageReturnedIntent.getExtras().get("data");
+                    Uri selectedImage = imageReturnedIntent.getData();
+                    try{
+                        bitmap = Util.decodeBitmap(this, selectedImage);
+                    }catch(Exception e){
+                        e.printStackTrace();
+                    }
                 }
             break;
             case 1:
