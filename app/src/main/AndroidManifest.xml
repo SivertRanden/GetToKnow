@@ -37,6 +37,8 @@
         <activity
             android:name=".activities.ViewImage"
             android:parentActivityName=".activities.ListNames" />
+        <activity
+            android:name=".activities.UserPreferences" />
         <activity android:name=".activities.AddPeople"
             android:parentActivityName=".activities.MainActivity">
 

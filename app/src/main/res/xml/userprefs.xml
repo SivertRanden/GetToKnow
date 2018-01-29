@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:title="Personal info">
+    <EditTextPreference
+        android:key="firstname"
+        android:title="First name"
+        android:summary="Here you can save your first name"
+        android:dialogTitle="Enter your first name: "
+        android:defaultValue="firstname" >
+    </EditTextPreference>
+    <EditTextPreference
+        android:key="lastname"
+        android:title="last name"
+        android:summary="Here you can save your last name"
+        android:dialogTitle="Enter your last name: "
+        android:defaultValue="Lastname" >
+    </EditTextPreference>
+    </PreferenceCategory>
+</PreferenceScreen>

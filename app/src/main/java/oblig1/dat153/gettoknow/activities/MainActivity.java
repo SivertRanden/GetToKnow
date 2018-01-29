@@ -33,4 +33,8 @@ public class MainActivity extends AppCompatActivity {
 
     //Starter AddPeople
     public void button4Action(View view) { startActivity(new Intent ( this, AddPeople.class)); }
+
+    public void startPreferences(View view){
+        startActivity(new Intent(this, UserPreferences.class));
+    }
 }
