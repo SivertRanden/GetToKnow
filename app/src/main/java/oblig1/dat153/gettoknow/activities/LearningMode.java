@@ -50,7 +50,7 @@ public class LearningMode extends AppCompatActivity {
         EditText editText = findViewById(R.id.guessedName);
         String guessedName = editText.getText().toString().toLowerCase();
         if (!Util.inputValidation(guessedName)) {
-            Toast.makeText(getApplicationContext(), "Only letters are allowed!", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), R.string.error_message, Toast.LENGTH_LONG).show();
         } else {
             String correctName = currentPerson.getFirstName().toLowerCase();
             if (guessedName.equals(correctName)) {

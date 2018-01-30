@@ -67,7 +67,7 @@ public class AddPeople extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Person added!", Toast.LENGTH_LONG).show();
             finish();
         } else {
-            Toast.makeText(getApplicationContext(), "Only letters are allowed!", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), R.string.error_message, Toast.LENGTH_LONG).show();
         }
     }
 
