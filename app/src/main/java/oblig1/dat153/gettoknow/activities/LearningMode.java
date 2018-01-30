@@ -41,9 +41,15 @@ public class LearningMode extends AppCompatActivity {
         score = 0;
         guesses = 0;
         randomList = PersonCollection.people;
-        Collections.shuffle(randomList);
-        adapter = new ImageAdapter(this, randomList);
-        setRandomImage();
+        if(!(randomList.size() == 0)) {
+            Collections.shuffle(randomList);
+            adapter = new ImageAdapter(this, randomList);
+            setRandomImage();
+        }else{
+            Toast.makeText(getApplicationContext(), "Add some people before you play!", Toast.LENGTH_LONG).show();
+            finish();
+        }
+
     }
 
     public void guess(View view){

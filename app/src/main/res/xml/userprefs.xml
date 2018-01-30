@@ -6,15 +6,11 @@
         android:key="firstname"
         android:title="First name"
         android:summary="Here you can save your first name"
-        android:dialogTitle="Enter your first name: "
-        android:defaultValue="firstname" >
-    </EditTextPreference>
+        android:dialogTitle="Enter your first name: "/>
     <EditTextPreference
         android:key="lastname"
-        android:title="last name"
+        android:title="Last name"
         android:summary="Here you can save your last name"
-        android:dialogTitle="Enter your last name: "
-        android:defaultValue="Lastname" >
-    </EditTextPreference>
+        android:dialogTitle="Enter your last name: "/>
     </PreferenceCategory>
 </PreferenceScreen>

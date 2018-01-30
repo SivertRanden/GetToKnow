@@ -1,6 +1,7 @@
 package oblig1.dat153.gettoknow.activities;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,6 +15,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        SharedPreferences prefs = this.getSharedPreferences("userprefs", MODE_PRIVATE);
+        if(!prefs.contains("firstname")){
+            startActivity(new Intent(this, UserPreferences.class));
+        }
     }
 
     //Starter ListNames
@@ -32,9 +37,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //Starter AddPeople
-    public void button4Action(View view) { startActivity(new Intent ( this, AddPeople.class)); }
-
-    public void startPreferences(View view){
-        startActivity(new Intent(this, UserPreferences.class));
+    public void button4Action(View view) {
+        startActivity(new Intent ( this, AddPeople.class));
     }
+
 }

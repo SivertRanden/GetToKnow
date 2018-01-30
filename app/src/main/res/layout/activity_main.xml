@@ -73,12 +73,5 @@
             android:onClick="button4Action"
             android:text="@string/main_page_button4" />
 
-        <Button
-            android:id="@+id/preferencebutton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="startPreferences"
-            android:text="Button" />
-
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
