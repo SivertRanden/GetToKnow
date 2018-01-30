@@ -9,4 +9,5 @@
     <string name="enter_first_name">Enter first name</string>
     <string name="add_last_name">Add last name</string>
     <string name="add_image_button_text">Add image</string>
+    <string name="error_message">Only letters are allowed!</string>
 </resources>
