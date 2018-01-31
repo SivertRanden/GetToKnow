@@ -10,4 +10,6 @@
     <string name="add_last_name">Add last name</string>
     <string name="add_image_button_text">Add image</string>
     <string name="error_message">Only letters are allowed!</string>
+    <string name="add_picture_button_text">Add profile picture</string>
+    <string name="change_picture_button_text">Change profile picture</string>
 </resources>

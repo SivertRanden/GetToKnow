@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 
 import oblig1.dat153.gettoknow.R;
@@ -43,10 +44,24 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent ( this, AddPeople.class));
     }
 
+    //Starter Profile
+    public void profileButtonAction(View view){
+        startActivity(new Intent(this, Profile.class));
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.main_activity_actionbar, menu);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        if(item.getItemId() == R.id.action_profile){
+            startActivity(new Intent(this, Profile.class));
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }
