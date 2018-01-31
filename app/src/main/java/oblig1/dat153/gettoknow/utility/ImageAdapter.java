@@ -48,7 +48,7 @@ public class ImageAdapter extends BaseAdapter {
     }
 
     /**
-     * This gets the view of the actual image so that we can use this in gridview and imageview
+     * This gets the view of the actual image so that we can use this in gridview and imageview...
      */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
