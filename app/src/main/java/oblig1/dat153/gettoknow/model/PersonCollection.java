@@ -23,10 +23,10 @@ public class PersonCollection extends AppCompatActivity {
 
     public static ArrayList<Person> init(){
         people = new ArrayList<Person>();
-//        people.add(new Person("Sivert", "Randen", "android.resource://oblig1.dat153.gettoknow/drawable/image2"));
-//        people.add(new Person("Darri", "Nökkvason", "android.resource://oblig1.dat153.gettoknow/drawable/image1"));
-//        people.add(new Person("Bentein", "Thomassen", "android.resource://oblig1.dat153.gettoknow/drawable/bentein"));
-//        people.add(new Person("Volker", "Stoltz", "android.resource://oblig1.dat153.gettoknow/drawable/image3"));
+        people.add(new Person("Sivert", "Randen", "android.resource://oblig1.dat153.gettoknow/drawable/image2"));
+        people.add(new Person("Darri", "Nökkvason", "android.resource://oblig1.dat153.gettoknow/drawable/image1"));
+        people.add(new Person("Bentein", "Thomassen", "android.resource://oblig1.dat153.gettoknow/drawable/bentein"));
+        people.add(new Person("Volker", "Stoltz", "android.resource://oblig1.dat153.gettoknow/drawable/image3"));
         return people;
     }
 
