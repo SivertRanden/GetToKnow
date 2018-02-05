@@ -121,4 +121,8 @@ public class LearningMode extends AppCompatActivity {
         return currentPerson;
     }
 
+    public int getScore() {
+        return score;
+    }
+
 }
