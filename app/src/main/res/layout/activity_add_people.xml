@@ -45,15 +45,12 @@
             android:onClick="addImageButtonClicked"
             android:text="@string/add_image_button_text" />
 
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/floatingActionButton"
-            android:layout_width="64dp"
-            android:layout_height="57dp"
-            android:layout_marginTop="25dp"
-            android:clickable="true"
+        <Button
+            android:id="@+id/addPerson"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:onClick="completeButtonClicked"
-            android:rotation="-90"
-            app:backgroundTint="@color/colorPrimary"
-            app:srcCompat="@android:drawable/arrow_down_float" />
+            android:text="Teshter" />
+
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
