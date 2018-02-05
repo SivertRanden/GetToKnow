@@ -116,4 +116,9 @@ public class LearningMode extends AppCompatActivity {
             return super.onOptionsItemSelected(item);
         }
     }
+
+    public Person getCurrentPerson() {
+        return currentPerson;
+    }
+
 }
