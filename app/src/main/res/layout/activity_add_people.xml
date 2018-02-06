@@ -43,14 +43,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="addImageButtonClicked"
+            android:background="@drawable/button"
+            android:textColor="#ffffff"
             android:text="@string/add_image_button_text" />
 
         <Button
             android:id="@+id/addPerson"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button"
             android:onClick="completeButtonClicked"
-            android:text="Teshter" />
+            android:text="@string/addPersonButtonText"
+            android:textColor="#ffffff" />
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

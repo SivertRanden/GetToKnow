@@ -63,7 +63,9 @@ public class AddPeople extends AppCompatActivity {
             firstname = firstname.substring(0,1).toUpperCase() + firstname.substring(1, firstname.length());
             lastname = lastname.substring(0,1).toUpperCase() + lastname.substring(1, lastname.length());
             Person p = new Person(firstname, lastname, bitmap);
+            Log.d("sizebefore", "" + PersonCollection.people.size());
             PersonCollection.people.add(p);
+            Log.d("sizeafter", "" + PersonCollection.people.size());
             Toast.makeText(getApplicationContext(), "Person added!", Toast.LENGTH_LONG).show();
             finish();
         } else {

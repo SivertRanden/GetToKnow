@@ -12,4 +12,5 @@
     <string name="error_message">Only letters are allowed!</string>
     <string name="add_picture_button_text">Add profile picture</string>
     <string name="change_picture_button_text">Change profile picture</string>
+    <string name="addPersonButtonText">Add person</string>
 </resources>
