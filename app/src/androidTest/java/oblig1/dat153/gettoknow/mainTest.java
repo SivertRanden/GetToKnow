@@ -2,6 +2,7 @@ package oblig1.dat153.gettoknow;
 
 import android.app.Activity;
 import android.content.ComponentName;
+import android.graphics.Bitmap;
 import android.support.test.espresso.Espresso;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
@@ -17,6 +18,7 @@ import java.util.Collection;
 import java.util.Iterator;
 
 import oblig1.dat153.gettoknow.activities.MainActivity;
+import oblig1.dat153.gettoknow.model.Person;
 import oblig1.dat153.gettoknow.model.PersonCollection;
 
 import static android.support.test.InstrumentationRegistry.getInstrumentation;
@@ -39,8 +41,10 @@ public class mainTest {
     @Rule
     public ActivityTestRule<MainActivity> addPeopleTestRule = new ActivityTestRule<MainActivity>(MainActivity.class);
 
+    //Adding and removing a person to ensure the list is not empty
     @Test
     public void activitySwap() {
+        PersonCollection.people.add(new Person("Test", "test", ""));
         onView(withId(R.id.button1)).perform(click());
         assertEquals(getActivityInstance().getLocalClassName(), "activities.ListNames");
         pressBack();
@@ -52,6 +56,14 @@ public class mainTest {
         pressBack();
         onView(withId(R.id.button4)).perform(click());
         assertEquals(getActivityInstance().getLocalClassName(), "activities.AddPeople");
+        PersonCollection.people.remove(PersonCollection.people.size()-1);
+    }
+
+    @Test
+    public void testStartQuizWithEmptyList(){
+        PersonCollection.people.clear();
+        onView(withId(R.id.button3)).perform(click());
+        assertEquals(getActivityInstance().getLocalClassName(), "activities.MainActivity");
     }
 
     private Activity getActivityInstance(){
