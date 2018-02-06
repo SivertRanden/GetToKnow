@@ -42,11 +42,16 @@ These tests have no special prerequisites.
   * user preference activity should not launch
 
 #### MainActivity activity test
-These tests have no special prerequisites.
+The main test have no special prerequisites.
+Testing preferences requires a clean install of the app.
 
 * that correct activities are launched when buttons are pressed
 
   * correct activity is launched
+
+* that preferences starts on first time app launch
+
+  * Correct activity is launched
 
 ## Instrumented unit testing
 
